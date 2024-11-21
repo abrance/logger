@@ -2,7 +2,6 @@ package logger
 
 import (
 	"encoding/json"
-	"fmt"
 	"os"
 	"runtime"
 	"sync"
@@ -19,7 +18,7 @@ func newBrush(color string) brush {
 	}
 }
 
-//鉴于终端的通常使用习惯，一般白色和黑色字体是不可行的,所以30,37不可用，
+// 鉴于终端的通常使用习惯，一般白色和黑色字体是不可行的,所以30,37不可用，
 var colors = []brush{
 	newBrush("1;41"), // Emergency          红色底
 	newBrush("1;35"), // Alert              紫色
@@ -43,7 +42,7 @@ func (c *consoleLogger) Init(jsonConfig string) error {
 		return nil
 	}
 	if jsonConfig != "{}" {
-		fmt.Fprintf(os.Stdout, "consoleLogger Init:%s\n", jsonConfig)
+		//fmt.Fprintf(os.Stdout, "consoleLogger Init:%s\n", jsonConfig)
 	}
 
 	err := json.Unmarshal([]byte(jsonConfig), c)
